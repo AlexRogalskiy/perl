@@ -1,7 +1,6 @@
 #!C:\xampp\perl\bin\perl -w
 #/usr/bin/perl -w
 
-use CGI::Carp qw(fatalsToBrowser);
 use locale;
 use POSIX 'locale_h';
 
@@ -19,12 +18,32 @@ foreach my $var (@mass) {
 }
 
 @mass2 = (1 .. 10);
-
 foreach (@mass2) {
 	print "$_\n";
 }
-
 print join(" - ", @mass2);
+
+chomp(@mass2); ## chop()
+@mass3 = grep($_ <= 50, @mass2);
+@mass3 = map($_ * 3, @mass2);
+
+%mass4 = ("Jan" => 1, "Feb" => 2, "Mar" => 3);
+while(($key, $value) = each(%mass4)) {
+	print "$key => $value";
+}
+
+foreach my $var (keys(%mass4)) {
+	print "$var => $mass4{$var}\n";
+}
+
+@mass4_ = keys(%mass4);
+while ($var = pop(@mass4_)) {
+	print "$var => $mass4{$var}\n";
+}
+
+if(exists($mass4{'Jan'})) {
+	print "\$mass4{'Jan'} exists";
+}
 
 sub f_sort {
 	$str1 = lc($_[0]);

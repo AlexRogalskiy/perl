@@ -1,7 +1,6 @@
 #!C:\xampp\perl\bin\perl -w
 #/usr/bin/perl -w
 
-use CGI::Carp qw(fatalsToBrowser);
 %var = ('jan' => 1, 'feb' => 2);
 
 print "Current line: ", __LINE__, "\n";

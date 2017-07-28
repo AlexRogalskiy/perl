@@ -1,3 +1,6 @@
+#!C:\xampp\perl\bin\perl -w
+#/usr/bin/perl -w
+
 my $file = 'file.txt'; #имя файла, который читаем
 open FH, $file; #открываем файл
 my $text = _parseFile(*FH); #передаем файловый дескриптор в функцию
@@ -11,7 +14,7 @@ sub _parseFile
 }
 
 #печать простых чисел
-perl -wle "(1 x $_) !~ /^(1|((11+)\3+))$/ && print while ++ $_"
+#perl -wle "(1 x $_) !~ /^(1|((11+)\3+))$/ && print while ++ $_"
 
 #печать уникальных строк файла
-perl -ne '$s{$_}++ || print' file
+#perl -ne '$s{$_}++ || print' file
