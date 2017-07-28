@@ -57,3 +57,29 @@ for (my $i = 0; $i < @mass; $i++) {
 
 #/^[0-9]+$/
 #qr/<(.+)>(.*)<\/\1>/;
+#qr/<s1>(.*?)<\/s1>/;
+
+print $@ if(defined($a));
+
+#@_
+sub f_pass_gen {
+	$count_char = shift();
+	$count_char = 8 if(!defined($count_char));
+	@mass = ('a', 'b', 'c', 'd', 'e');
+	$passw = "";
+	for (my $i = 0; $i < $count_char; $i++) {
+		$passw .= $mass[int(rand(scalar(@mass)))];
+	}
+	return $passw;
+}
+
+print f_pass_gen(4);
+
+@mass = gmtime(time());
+@mass2 = localtime(time());
+
+use POSIX;
+use locale;
+setlocale(LC_ALL, 'ru_RU.CP1251');
+
+print strftime("\nToday %A %d.%m.%Y %H:%M:%S", localtime());
