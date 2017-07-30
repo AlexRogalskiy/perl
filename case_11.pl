@@ -1,10 +1,18 @@
-#!C:\xampp\perl\bin\perl -w
-#/usr/bin/perl -w
+#!C:\xampp\perl\bin\perl
+#/usr/bin/perl
 use strict;
+use warnings;
 
 use lib "C:\\Users\\Alex\\Documents\\perl\\Perl";
 use MyClass 1.0;
 use MyClass2 1.0;
+
+# compile errors
+BEGIN {
+	use CGI::Carp qw (carpout);
+	open(ERRLOG, ">>errlog.txt") or die("Error occurred while creating new output file\n$!\n");
+	carpout(\*ERRLOG);
+}
 
 my $obj = MyClass->new("var" => 20); #MyClass::new("MyClass", "var" => 20);
 print $obj, "\n";
