@@ -132,4 +132,9 @@ print "\n".$$pi;
 print "\n".${*p};
 
 print "\nPackage name: " . __PACKAGE__ . "\n";
-print &main::f_sub1;
+print &main::f_sub1."\n";
+
+unshift(@INC, "..");
+for (my $i = 0; $i < @INC; $i++) {
+	print $INC[$i]."\n";
+}
