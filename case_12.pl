@@ -5,6 +5,11 @@ use warnings;
 #use CGI::Carp qw(fatalsToBrowser);
 #use CGI qw(:standard);
 
+#use CGI;
+#my $form = new CGI;
+#$form->param('txt1');
+#$str =~ s/"/&quot;/g;
+
 #my $cookie = cookie(-name=>'id', -value=>'85', -expires=>"+10d", -path="/", -domain="test.ru");
 #print "Set-Cookie: $cookie\n";
 #print "Content-type: text/html\n\n";
@@ -16,6 +21,13 @@ foreach my $var (keys(%ENV)) {
 
 #split(/; /, $ENV{'HTTP_COOKIE'});
 #split(/&/, $ENV{'QUERY_STRING'});
+my $str;
+if ($ENV{'REQUEST_METHOD'} eq "GET") {
+	$str = $ENV{'QUERY_STRING'};
+} else {
+	read(STDIN, $str, $ENV{'CONTENT_LENGTH'});
+}
+
 my @cookies = ('one=1', 'two=2');
 my %cookies_;
 my ($name, $value);
