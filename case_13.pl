@@ -20,7 +20,6 @@ close(FILE);
 open(FILE2, 'file.txt') or die("ERROR > $!");
 flock(FILE2, 2) or die("ERROR > $!");
 #read(FILE2, $text, 6);
-
 #{
 #	local $/ = "";
 #	$text = <FILE2>;
@@ -29,7 +28,7 @@ flock(FILE2, 2) or die("ERROR > $!");
 #chomp(@text_arr);
 
 while(<FILE2>) {
-	print $_, "\n";
+	print chomp($_), "\n";
 }
 
 #print tell(FILE2);

@@ -38,8 +38,12 @@ my $str = encode_entities('<a href></a>', '<>"&');
 
 use HTML::LinkExtor;
 my $parser = HTML::LinkExtor->new(\&f_parser, $path);
-$parser->parse("");
-$parser->parse_file("");
+#$parser->parse("<html></html>");
+my @all_links = $parser->links();
+foreach my $item (@all_links) {
+	print $item->[0], ' ', $item->[1], $item->[2], "\n";
+}
+#$parser->parse_file("file.txt");
 
 our(@link, @mailto, @imt, @frame, @map);
 sub f_parser {
