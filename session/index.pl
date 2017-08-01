@@ -8,7 +8,7 @@ use CGI qw( :standard );
 use CGI::Session;
 use Digest::MD5 qw( md5_hex );
 push(@INC, 'C:/Users/Alex/Documents/perl/Perl/session');
-require "MyData.pl";
+require "MyData.pm";
 my $log = $MyData::enter_login;
 my $pass = $MyData::enter_passw;
 
@@ -19,7 +19,7 @@ my $formPass = param('passw');
 if(defined($formLogin) && defined($formPass)) {
 	$formPass = md5_hex($formPass);
 	if($formLogin eq $log && $formPass eq $pass) {
-		my $tmp = "./";
+		my $tmp = $MyData::SessPath;
 		#$CGI::Session::MySQL::TABLE_NAME = $MyData::TableName;
 		#my $sess = CGI::Session->new("driver:mysql", undef, {DataSource=>$MyData::DataSource, User=>$MyData::User, Password=>$MyData::Password}) or die CGI::Session->errstr();
 		my $sess = CGI::Session->new("driver:file", undef, {Directory=>$tmp}) or die CGI::Session->errstr();

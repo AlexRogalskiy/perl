@@ -31,6 +31,9 @@ if(!$db) {
 #$db->do("INSERT INTO staff VALUES(NULL, 'Васильев', 'Антон', 'Васильев', 'vasiliyev\@osp-bank.ru', '7654321', '1', 'M', '1984-03-02')");
 $db->do('SET NAMES cp866');
 my $res = $db->prepare("SELECT * FROM staff");
+#SELECT 'Строка' RLIKE '^[А-Яа-я]+;'
+#$str =~ s/\\/\\\\/g;
+#$str =~ s/'/\\'/g;
 $res->execute();
 if($res->err) {
 	print "ERROR: " . $res->errstr;

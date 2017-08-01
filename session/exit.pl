@@ -6,7 +6,7 @@ use warnings;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw( :standard );
 use CGI::Session;
-require "MyData.pl";
+require "MyData.pm";
 
 my $SID;
 if(defined(cookie('SID'))) {
