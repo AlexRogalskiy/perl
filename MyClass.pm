@@ -1,18 +1,18 @@
 package MyClass;
 use strict;
 
-our $VERSION = 2.0;
-
 #use base qw(ParentClass);
+our $VERSION = 2.0;
 
 my $str = "Private string"; #private
 our $public_str = "Public string";
+
 my $link_sub = sub { #private
 	print "Private method", "\n";
 };
 
 sub new {
-	my $invocant = shift(); #my $class = shift();
+	my $invocant = shift(); #my $class = shift(); @_
 	my $class = ref($invocant) || $invocant; #$class = ref $class if ref $class;
 	my $self = { "var" => 10, @_ }; #my $self = bless {}, $class;
 	print $self . "\n";
@@ -29,7 +29,7 @@ sub f_display {
 }
 
 sub f_set {
-	my $class = shift();
+	my ( $class ) = shift();
 	$str = shift();
 	#my $_str = shift();
 	#$str = $_str if($_str && $_str =~ /^[0-9]+$/);
@@ -49,6 +49,7 @@ sub AUTOLOAD {
 }
 
 sub DESTROY {
+	my ( $self ) = @_;
 	print "\nMethod DESTROY invoked", "\n";
 }
 1;
